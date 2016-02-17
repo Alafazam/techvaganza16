@@ -1,0 +1,37 @@
+<style type="text/css"> 
+#save {
+	-webkit-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.2) 0 1px 0 0;
+	border-bottom-color:#333;
+	border:1px solid #61c4ea;
+	background-color:#7cceee;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	color:#fff;
+	font-family:'Verdana',Arial,sans-serif;
+	font-size:14px;
+	text-shadow:#b2e2f5 0 1px 0;
+	padding:5px
+}
+</style>
+{% if regiterz==1 %}
+<div id="register_button">
+    <form action="/register_event" method="POST">
+        <input type="text" name="event" value="{{event_name}}" hidden>
+        <button id="save" name="save" value="Register" class="btn btn-primary" type="submit">Register</button>
+    </form>
+</div>
+{% endif%} {% if regiterz==2 %}
+<div id="register_button">
+    <a class="btn btn-primary" href="/login">Login to Register</a>
+</div>
+{% endif%} {% if regiterz==3 %}
+<div id="register_button">
+    <form action="/unreg" method="POST">
+        <input type="text" name="event" value="{{event_name}}" hidden>
+        <button id="save" name="save" value="Register" class="btn btn-primary" type="submit">UnRegister</button>
+    </form>
+</div>
+{% endif%}

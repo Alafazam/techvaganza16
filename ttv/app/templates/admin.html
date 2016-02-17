@@ -1,0 +1,27 @@
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+<div class="container-fluid">
+    <table class="table">
+        <div>
+        	<thead>
+        	<tr>
+        		<th>Sn.</th>
+        	    <th>All Events</th>
+        	</tr>
+        	    </thead>
+        	    <tbody>
+        							<!-- {% set counter = ['0'] %}                 -->
+        					<!--    {% for event in events_list %} -->
+        	<tr>
+	            <th>{{counter|length}}</th>										
+        	    <th><a href="/arif_select/{{event.view_name}}">{{event.name}}</a></th>
+        	</tr>
+        	
+        							<!-- {% if counter.append('0') %}{% endif %} -->
+        	        <!--    {% endfor %} -->
+        	
+        	    </tbody>
+        </div>
+    </table>
+
+</div>

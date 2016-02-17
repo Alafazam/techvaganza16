@@ -1,0 +1,29 @@
+Content-Type: multipart/mixed; boundary="===============0410063115=="
+MIME-Version: 1.0
+Subject: Password reset instructions
+From: noreply@techvaganza.org
+To: alafazam@gmail.com
+Date: Wed, 29 Apr 2015 20:55:55 +0530
+Message-ID: <20150429152554.5960.25244@GamingGiant>
+
+--===============0410063115==
+Content-Type: multipart/alternative; boundary="===============2097562792=="
+MIME-Version: 1.0
+
+--===============2097562792==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+Click the link below to reset your password:
+
+http://localhost:5000/reset/WyIyIiwiZmU3NTA5YTIzY2I2MWI2Y2M1ODA5MWE3ZGExODM3M2EiXQ.CCKJgg.Vf12MVSpw_okw3PGRdi2rGbgBdw
+--===============2097562792==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<p><a href="http://localhost:5000/reset/WyIyIiwiZmU3NTA5YTIzY2I2MWI2Y2M1ODA5MWE3ZGExODM3M2EiXQ.CCKJgg.Vf12MVSpw_okw3PGRdi2rGbgBdw">Click here to reset your password</a></p>
+--===============2097562792==--
+
+--===============0410063115==--

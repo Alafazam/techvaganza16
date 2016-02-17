@@ -1,0 +1,123 @@
+{% extends "event_layout.html" %} {% block content %}
+{% macro social_login(provider_id, display_name) %}
+  <form action="{{ url_for('social.login', provider_id=provider_id) }}" method="POST">
+    <input  type="submit" id="submit" value="Login with {{ display_name }}">
+  </form>
+{% endmacro %}
+
+  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1484405811783447";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="container">
+
+    <div class="content">
+        <h2>ABHIVYAKTI <div class="fb-like" data-href="https://www.facebook.com/abhivyakti.nitsri/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div> </h2>
+ 
+        <section>
+             <p>"Poetry is when an emotion has found its thought and the thought has found words" <sub>-Robert Frost</sub></p>
+            
+        </section>
+        <section>
+            <b><p>There are two separate Events :-</p></b>
+            <ul>
+                <li><h3>Poetry:</h3></li>
+            </ul>
+            <p>There's a poet in everyone. See if your words can resonate with the feelings of the world. </p>
+            <ul>
+                <li><h3>Creative writing:</h3></li>
+            </ul>
+            <p>Wit, Logic, Innovation, Sarcasm and a way with Words. Do you pride yourself on having these abilities. Test out your mettle against those who think they got it more than you. </p>
+        </section>
+        	
+	<!--	{{ social_login('facebook', 'Facebook' )}}  -->
+        <section>
+            <h3><b>Events details: </b></h3>
+            <h3>Problem Statement:</h3>
+            <ul>
+                <li><h3>Poetry:</h3></li>
+            </ul>
+            <p>"HOPE"/"UMMEED" (Amidst any Scenario/Incidence You can think of).</p>
+            <ul>
+                <li><h3>Creative writing:</h3></li>
+            </ul>
+            <p>The theme shall be given at the spot during the event (visual/audio input).</p>
+        </section>
+        <section>
+            <h3><b>Event format: </b></h3>
+            <ul>
+                <li><h3>Poetry Competition:</h3></li>
+            </ul>
+            <p>Online/Offline submission on the given Theme.</p>
+            <ul>
+                <li><h3>Creative writing:</h3></li>
+            </ul>
+            <p>Short Story based on some  input.</p>
+        </section>
+        
+        <section>
+            <h3>Important Dates:</h3>
+            <p>The entry should be submitted latest by 11 am on 23rd May, 2015.</p>
+        </section>
+        <section>
+            <h3><b>Rules:</b></h3>
+            <h3>Poetry:</h3>
+            <ul>
+            <li>The submissions can be made online/offline as per your convenience.</li>
+                <li>The theme of the event is provided.</li>
+                <li>The online submissions are to be emailed at abhivyakti@techvaganza.org with the     subject POETRY .</li>
+                <li>Language is no bar ( But the script should be in Hindi/English).</li>
+                <li>For the offline submission, students shall submit a PRINTED COPY at the    Humanities department.</li>
+                <li>The submissions should reach by 11 am on 23rd may </li>
+ <li> Plagiarism shall lead to disqualification.
+</li>
+            </ul>
+            <h3>Creative writing:</h3>
+            <ul>
+                <li>An input shall be provided to students.</li>
+                <li>The students will have to write a short, innovative story based on the theme.</li>
+                <li>The Time Limit is 1 hour.</li>
+            </ul>
+        </section>
+        <section>
+            <h3><b>Judging criteria:</b></h3>
+            <h3>Poetry/Creative writing:</h3>
+            <p> The submissions shall be judged by a panel of judges.</p>
+        </section>
+        <section>
+            <h3><b>Arena:</b></h3>
+            <p>Hi-Tech Room,Online/Offline Submission.</p>
+        </section>
+        
+         <section>
+            <h3>
+               <b> For more info contact us at:</b>
+            </h3>
+            <ul>
+                <li>
+                    Aditya Gupta : (9622131800)
+
+                </li>
+                <li>
+                   Ayush Kumar : (9086412911)
+
+                </li>
+                
+            </ul>
+            
+        </section>
+
+
+
+
+
+</div>
+</div>
+
+
+        {% endblock %}
