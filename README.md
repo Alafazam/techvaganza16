@@ -12,14 +12,13 @@ Based on my experience, these are the things from last year that we should keep.
     - backdoor api for admin to update and view stuff
     - backdoor api for organisors to view other users who have registered to their event
     - passowrd reset,change and recover from last year
-    - RESTful Api for Android, {with proper auth}
 
 
   - Event model
     - simlple steps to add new events on the go, just put html file and update in database
     - backdoor api for making an user organisor for an event [most important]
     - backdoor api for collecting stats for admin
-    - RESTful Api for Android, {with proper auth} 
+    - RESTful Api for Android, {with proper auth}[incomplete] 
   - Lots of admin Magic
 
 
@@ -28,10 +27,10 @@ These are the things that I wanted to do, but wasn't able to complete
   - Beter front end, with more animations possibly using [this](http://mojs.io/) 
   - More robust apis, so that we can add/edit organisors, events on the go, from mobile site. { like baat karte karte update kar do and eveyone is like how tf that happned so fast}
   - Separate bootstrap based frontend for mobile, minimum data usage.
-  - A proper mobile app api, last time android app was not dynamic, this time it should be.
   - Login with facebook and Gmail (awaited for two years now)
-  - same theme on all pages. 
-  - DEEBUG MODE
+  - Same theme on all pages, and AJAX API. 
+  - A proper mobile app api, last time android app was not dynamicly updating with website, this time it should be. 
+  - DEBUG MODE
   - "Better content". Please, we need a good content writer exclusively for web site, who will change/edit/format all events description/details and write catchy tag-lines. almost half of my time got wasted in spell and grammer checks.
 
 
