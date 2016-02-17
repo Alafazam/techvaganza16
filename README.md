@@ -41,9 +41,6 @@ These are the things that I wanted to do, but wasn't able to complete
 ##### Sare organisors k liye apan pehle se format dednege ki event proposal web team ko issi format me chahiye, aur usso apne parse k use se sedhe .html files bna lenge jo baad me jinja-templating me kaam ayi gi.
 
 
-### Version
-16.0
-
 ### Installation
 
 You need pip and git installed globally:
