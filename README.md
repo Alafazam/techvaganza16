@@ -55,7 +55,7 @@ $ cd techvaganza
 
 ```sh
 $ git clone https://github.com/Alafazam/techvaganza16.git 
-$ cd techvaganza16
+$ cd techvaganza16/ttv
 
 $ pip install virtualenv
 $ virtualenv venv
