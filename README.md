@@ -14,11 +14,12 @@ Based on my experience, these are the things from last year that we should keep.
     - passowrd reset,change and recover from last year
     - RESTful Api for Android, {with proper auth}
 
-   - Event model
-        - simlple steps to add new events on the go, just put html file and update in database
-        - backdoor api for making an user organisor for an event [most important]
-        - backdoor api for collecting stats for admin
-        - RESTful Api for Android, {with proper auth} 
+
+  - Event model
+    - simlple steps to add new events on the go, just put html file and update in database
+    - backdoor api for making an user organisor for an event [most important]
+    - backdoor api for collecting stats for admin
+    - RESTful Api for Android, {with proper auth} 
   - Lots of admin Magic
 
 
