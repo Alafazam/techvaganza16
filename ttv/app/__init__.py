@@ -18,8 +18,11 @@ from flask.ext.login import LoginManager
 
 app = Flask(__name__)
 
-
+# use this config for production only
 app.config.from_object('config')
+
+
+
 # app.config['SOCIAL_FACEBOOK'] = {
 #     'consumer_key': '1484405811783447',
 #     'consumer_secret': 'ee8930d2e57550ceaf12b04b158c38d1'
@@ -78,6 +81,7 @@ def arif_select(event_name):
 @app.route('/index')
 @app.route('/home')
 def home():
+	print('asda');
 	return render_template('index.html')
 
 

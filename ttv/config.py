@@ -49,6 +49,6 @@ SECURITY_CHANGEABLE =  True
 SECURITY_POST_CONFIRM_VIEW='user'
 SECURITY_POST_LOGIN_VIEW='user'
 
-APPLICATION_PATH = "cgi-bin/ttv"
+# APPLICATION_PATH = "cgi-bin/ttv"
 
-SERVER_NAME = "techvaganza.org"
+# SERVER_NAME = "techvaganza.org"
