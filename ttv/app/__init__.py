@@ -9,20 +9,21 @@ from flask_security import Security, SQLAlchemyUserDatastore, \
     UserMixin, RoleMixin, login_required,login_user,roles_required,roles_accepted,current_user
 from flask import Flask, request, redirect, url_for
 from flask.ext.login import LoginManager
-from flask.ext.social.views import connect_handler
-from flask.ext.social import Social, SQLAlchemyConnectionDatastore, \
-     login_failed
-from flask.ext.social.datastore import SQLAlchemyConnectionDatastore
-from flask.ext.social.utils import get_provider_or_404,get_connection_values_from_oauth_response
+
+# from flask.ext.social.views import connect_handler
+# from flask.ext.social import Social, SQLAlchemyConnectionDatastore, \
+#      login_failed
+# from flask.ext.social.datastore import SQLAlchemyConnectionDatastore
+# from flask.ext.social.utils import get_provider_or_404,get_connection_values_from_oauth_response
 
 app = Flask(__name__)
 
 
 app.config.from_object('config')
-app.config['SOCIAL_FACEBOOK'] = {
-    'consumer_key': '1484405811783447',
-    'consumer_secret': 'ee8930d2e57550ceaf12b04b158c38d1'
-}
+# app.config['SOCIAL_FACEBOOK'] = {
+#     'consumer_key': '1484405811783447',
+#     'consumer_secret': 'ee8930d2e57550ceaf12b04b158c38d1'
+# }
 
 db = SQLAlchemy(app)
 
@@ -37,8 +38,8 @@ mail = Mail(app)
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore,confirm_register_form=ExtendedConfirmRegisterForm)
 
-connection_datastore = SQLAlchemyConnectionDatastore(db, Connection)
-social= Social(app, connection_datastore)
+# connection_datastore = SQLAlchemyConnectionDatastore(db, Connection)
+# social= Social(app, connection_datastore)
 
 from .utils import *
 # login_manager.init_app(app)
@@ -85,7 +86,7 @@ def home():
 @login_required
 def user():
 	#return render_template('index.html')
-	return render_template('all.html', facebook_conn=social.facebook.get_connection())
+	return render_template('all.html',)
 
 
 
@@ -269,7 +270,7 @@ def event(event_name):
 		else:
 			return render_template('events/%s.html'%(event_name),regiterz=2,event_name=event_name)
 	else:
-		return redirect("/events",facebook_conn=social.facebook.get_connection())
+		return redirect("/events")
 
 
 
@@ -310,123 +311,112 @@ def get_all_organisors():
 #
 #
 
-@app.route('/registerS/<provider_id>', methods=['GET', 'POST'])
-def registerS(provider_id=None):
-        
-##        register_user_form = RegisterForm()
-
-        if provider_id:
-                
-                provider = get_provider_or_404(provider_id)
-                connection_values = session.get('failed_login_connection',None)
-        else:
-                
-                provider = None
-                connection_values = None
-
-##        print connection_values
-
-                
-        
-
-##        print user.id
-##        db.session.commit()
-##        access_token=connection_values[u'access_token']
-        if connection_values:
-                
-                email=connection_values[u'email']
-##                print email
-                user=user_datastore.find_user(email=email)
-                if(user):
+# @app.route('/registerS/<provider_id>', methods=['GET', 'POST'])
+# def registerS(provider_id=None):
+# ##        register_user_form = RegisterForm()
+#         if provider_id:
+#                 provider = get_provider_or_404(provider_id)
+#                 connection_values = session.get('failed_login_connection',None)
+#         else:
+#                 provider = None
+#                 connection_values = None
+# ##        print connection_values
+# ##        print user.id
+# ##        db.session.commit()
+# ##        access_token=connection_values[u'access_token']
+#         if connection_values:                
+#                 email=connection_values[u'email']
+# ##                print email
+#                 user=user_datastore.find_user(email=email)
+#                 if(user):
+#                         connectionE=connection_datastore.find_connection(**connection_values)
+#                         if connectionE is None:
+#                                 connection_values['user_id'] = user.id
+#                                 connection=connection_datastore.create_connection(**connection_values)
+#                                 if login_user(user):
+#                                         db.session.commit()
+#                                         flash('Facebook account linked successfully with existing id', 'info')
+#                                         return redirect('/user')
+#                                 else:
+#                                         flash('Failed to link with Facebook!Try Again', 'info')
+#                                         return redirect('/user')
+                                        
+#                         else:
+#                                 if login_user(user):
+# ##                                        flash(' Facebook Already linked', 'info')
+#                                         return redirect('/user')
+                                
+                                
+#                 else:
                         
-                        connectionE=connection_datastore.find_connection(**connection_values)
-                        if connectionE is None:
-                                connection_values['user_id'] = user.id
-                                connection=connection_datastore.create_connection(**connection_values)
-                                if login_user(user):
-                                        db.session.commit()
-                                        flash('Facebook account linked successfully with existing id', 'info')
-                                        return redirect('/user')
-                                else:
-                                        flash('Failed to link with Facebook!Try Again', 'info')
-                                        return redirect('/user')
-                                        
-                        else:
-                                if login_user(user):
-##                                        flash(' Facebook Already linked', 'info')
-                                        return redirect('/user')
-                                
-                                
-                else:
-                        
-##                        print "hello"
-                        user = user_datastore.create_user()
-                        db.session.commit()
-                        connection_values['user_id'] = user.id
-##                        print connection_values['user_id']
-                        connectionE=connection_datastore.find_connection(**connection_values)
+# ##                        print "hello"
+#                         user = user_datastore.create_user()
+#                         db.session.commit()
+#                         connection_values['user_id'] = user.id
+# ##                        print connection_values['user_id']
+#                         connectionE=connection_datastore.find_connection(**connection_values)
 
-                        if connectionE is None:
+#                         if connectionE is None:
                                 
-                                connection=connection_datastore.create_connection(**connection_values)
-                                if login_user(user):
+#                                 connection=connection_datastore.create_connection(**connection_values)
+#                                 if login_user(user):
                                         
-                                        db.session.commit()
-                                        flash('Account created successfully', 'info')
-                                        api=provider.get_api()
-##                                        print api
-                                        profile=api.get_object("me")
-##                                        print profile
-                                        email = profile["email"]
+#                                         db.session.commit()
+#                                         flash('Account created successfully', 'info')
+#                                         api=provider.get_api()
+# ##                                        print api
+#                                         profile=api.get_object("me")
+# ##                                        print profile
+#                                         email = profile["email"]
                                         
-                                        user.email=email
-                                        user.username=email
-                                        user.first_name=profile["first_name"]
-                                        user.last_name=profile["last_name"]
-                                        user.gender=profile["gender"]
-                                        user.active=1
-                                        db.session.commit()
-        ##                                flash('Account created successfully', 'info')
-                                        return redirect('/user')
+#                                         user.email=email
+#                                         user.username=email
+#                                         user.first_name=profile["first_name"]
+#                                         user.last_name=profile["last_name"]
+#                                         user.gender=profile["gender"]
+#                                         user.active=1
+#                                         db.session.commit()
+#         ##                                flash('Account created successfully', 'info')
+#                                         return redirect('/user')
                                 
-                                else:
+#                                 else:
                                         
-                                        flash('Failed!Try Again', 'info')
-                                        return redirect("/register")
+#                                         flash('Failed!Try Again', 'info')
+#                                         return redirect("/register")
                                 
-                        else:
+#                         else:
                                 
-                                flash('Failed!Try Again', 'info')
-                                return redirect("/register")
+#                                 flash('Failed!Try Again', 'info')
+#                                 return redirect("/register")
                 
-        else:
+#         else:
                         
-                flash('Connection Refused','info')
-                return redirect("/register")
+#                 flash('Connection Refused','info')
+#                 return redirect("/register")
 
 
 
 
-class SocialLoginError(Exception):
-    def __init__(self, provider):
-        self.provider = provider
+# class SocialLoginError(Exception):
+#     def __init__(self, provider):
+#         self.provider = provider
 
 
 
-@login_failed.connect_via(app)
-def on_login_failed(sender, provider, oauth_response):
-    app.logger.debug('Social Login Failed via %s; '
-                     '&oauth_response=%s' % (provider.name, oauth_response))
+# @login_failed.connect_via(app)
+# def on_login_failed(sender, provider, oauth_response):
+#     app.logger.debug('Social Login Failed via %s; '
+#                      '&oauth_response=%s' % (provider.name, oauth_response))
 
-    # Save the oauth response in the session so we can make the connection
-    # later after the user possibly registers
-    session['failed_login_connection'] = \
-        get_connection_values_from_oauth_response(provider, oauth_response)
+#     # Save the oauth response in the session so we can make the connection
+#     # later after the user possibly registers
+#     session['failed_login_connection'] = \
+#         get_connection_values_from_oauth_response(provider, oauth_response)
 
-    raise SocialLoginError(provider)
+#     raise SocialLoginError(provider)
 
 
-@app.errorhandler(SocialLoginError)
-def social_login_error(error):
-    return redirect(
-        url_for('registerS', provider_id=error.provider.id, login_failed=1))
+# @app.errorhandler(SocialLoginError)
+# def social_login_error(error):
+#     return redirect(
+#         url_for('registerS', provider_id=error.provider.id, login_failed=1))
