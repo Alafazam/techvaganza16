@@ -82,7 +82,8 @@ def arif_select(event_name):
 @app.route('/home')
 def home():
 	print('asda');
-	return render_template('index.html')
+	# return render_template('index.html')
+	return render_template('comingsoon.html')
 
 
 
