@@ -1,474 +1,211 @@
 {% extends "base.html" %} {% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,900">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,700,900">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+          
+
 <style>
-	@font-face {
-	  src: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/decade.ttf");
-	  font-family: Decade;
-	}
-	*, *:before, *:after {
-	  box-sizing: border-box;
-	  margin: 0;
-	  padding: 0;
-	}
+  html,
+body {
+  background: #010A0E;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-	html, body {
-	  height: 100%;
-	  overflow: hidden;
-	  background: #000;
-	}
-	@media (max-width: 767px) {
-	  html, body {
-	    font-size: 80%;
-	  }
-	}
-	@media (max-width: 640px) {
-	  html, body {
-	    font-size: 60%;
-	  }
-	}
-	@media (max-width: 480px) {
-	  html, body {
-	    font-size: 40%;
-	  }
-	}
+#title {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: table;
+}
 
-	.inner, .nav-panel ul .nav-btn:after {
-	  content: "";
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-	}
+h1 {
+  color: #FFFFFF;
+  font-family: Lato;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 20;
+  display: table-cell;
+  vertical-align: middle;
+}
+h1 span {
+  font-size: 100px;
+  text-shadow: 0 2px 5px rgba(25, 41, 48, 0.1), 0 4px 5px rgba(25, 41, 48, 0.1), 0 6px 5px rgba(25, 41, 48, 0.1), 0 8px 5px rgba(25, 41, 48, 0.1), 0 10px 5px rgba(25, 41, 48, 0.1), 0 12px 5px rgba(25, 41, 48, 0.1), 0 14px 5px rgba(25, 41, 48, 0.1), 0 16px 5px rgba(25, 41, 48, 0.1), 0 18px 5px rgba(25, 41, 48, 0.1), 0 20px 5px rgba(25, 41, 48, 0.1), 0 22px 5px rgba(25, 41, 48, 0.1), 0 24px 5px rgba(25, 41, 48, 0.1), 0 26px 5px rgba(25, 41, 48, 0.1), 0 28px 5px rgba(25, 41, 48, 0.1), 0 30px 5px rgba(25, 41, 48, 0.1);
+}
+h1 em {
+  display: block;
+  font-family: 'Open Sans';
+  font-style: normal;
+  letter-spacing: 20px;
+  color: #253D47;
+  text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, 1px 1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 0 2px 5px rgba(25, 41, 48, 0.1), 0 4px 5px rgba(25, 41, 48, 0.1), 0 6px 5px rgba(25, 41, 48, 0.1), 0 8px 5px rgba(25, 41, 48, 0.1), 0 10px 5px rgba(25, 41, 48, 0.1);
+}
+h1 em::before, h1 em::after {
+  content: '';
+  display: inline-block;
+  width: 160px;
+  position: relative;
+  top: -15px;
+  border: 1px solid #FFFFFF;
+  height: 5px;
+  box-shadow: 0 2px rgba(25, 41, 48, 0.1), 0 4px rgba(25, 41, 48, 0.1), 0 6px rgba(25, 41, 48, 0.1), 0 8px rgba(25, 41, 48, 0.1), 0 10px rgba(25, 41, 48, 0.1);
+}
 
-	.scene {
-	  width: 100%;
-	  height: 100%;
-	}
+#layers {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
 
-	.page {
-	  z-index: 1;
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  -webkit-transition: opacity .7s, z-index .7s, -webkit-transform .7s;
-	  transition: opacity .7s, z-index .7s, -webkit-transform .7s;
-	  transition: transform .7s, opacity .7s, z-index .7s;
-	  transition: transform .7s, opacity .7s, z-index .7s, -webkit-transform .7s;
-	  will-change: transform, opacity;
-	}
-	.page:nth-child(1) .left {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-1.jpg");
-	}
-	.page:nth-child(1) .right {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-2.jpg");
-	}
-	.page:nth-child(2) .left {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-3.jpg");
-	}
-	.page:nth-child(2) .right {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-4.jpg");
-	}
-	.page:nth-child(3) .left {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-5.jpg");
-	}
-	.page:nth-child(3) .right {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-6.jpg");
-	}
-	.page:nth-child(4) .left {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-7.jpg");
-	}
-	.page:nth-child(4) .right {
-	  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-8.jpg");
-	}
-	.page.active {
-	  z-index: 5;
-	  -webkit-transition: opacity .7s, z-index 0s .7s, -webkit-transform .7s;
-	  transition: opacity .7s, z-index 0s .7s, -webkit-transform .7s;
-	  transition: transform .7s, opacity .7s, z-index 0s .7s;
-	  transition: transform .7s, opacity .7s, z-index 0s .7s, -webkit-transform .7s;
-	}
-	.page.active .half {
-	  -webkit-transform: translateX(0) !important;
-	          transform: translateX(0) !important;
-	  -webkit-transition: -webkit-transform .7s ease-out;
-	  transition: -webkit-transform .7s ease-out;
-	  transition: transform .7s ease-out;
-	  transition: transform .7s ease-out, -webkit-transform .7s ease-out;
-	}
-	.page.previous {
-	  opacity: 0.4 !important;
-	  visibility: visible !important;
-	  -webkit-transition: opacity .7s, z-index 0s, -webkit-transform .7s;
-	  transition: opacity .7s, z-index 0s, -webkit-transform .7s;
-	  transition: transform .7s, opacity .7s, z-index 0s;
-	  transition: transform .7s, opacity .7s, z-index 0s, -webkit-transform .7s;
-	}
-	.page.small {
-	  -webkit-transform: scale(0.8);
-	          transform: scale(0.8);
-	  opacity: 0;
-	}
-	.page.small .half {
-	  -webkit-transform: translateX(0) !important;
-	          transform: translateX(0) !important;
-	}
-	.page:nth-child(2) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(2) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(3) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(3) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(4) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(4) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(5) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(5) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(6) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(6) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(7) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(7) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(8) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(8) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(9) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(9) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
-	.page:nth-child(10) .left {
-	  -webkit-transform: translateX(-100%);
-	          transform: translateX(-100%);
-	}
-	.page:nth-child(10) .right {
-	  -webkit-transform: translateX(100%);
-	          transform: translateX(100%);
-	}
+.layer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  -webkit-animation-name: zoom;
+          animation-name: zoom;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.layer.layer-2 {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.layer.layer-3 {
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.layer.layer-4 {
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.layer.layer-5 {
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
 
-	.half {
-	  position: absolute;
-	  top: 0;
-	  width: 50%;
-	  height: 100%;
-	  background-size: cover;
-	  -webkit-transition: -webkit-transform .7s ease-in;
-	  transition: -webkit-transform .7s ease-in;
-	  transition: transform .7s ease-in;
-	  transition: transform .7s ease-in, -webkit-transform .7s ease-in;
-	  will-change: transform;
-	}
-	.half.left {
-	  left: 0;
-	}
-	.half.right {
-	  left: 50%;
-	}
-	.half.withText:after {
-	  content: "";
-	  position: absolute;
-	  display: block;
-	  top: 0;
-	  left: 0;
-	  width: 100%;
-	  height: 100%;
-	  background: rgba(0, 0, 0, 0.5);
-	  z-index: 10;
-	}
+.star {
+  width: 11px;
+  height: 11px;
+  display: inline-block;
+  position: absolute;
+  fill: #ffffff;
+}
+.star:nth-child(3n+3) {
+  fill: #FEC777;
+}
+.star:nth-child(5n+5) {
+  fill: #498FB3;
+}
 
-	.heading {
-	  position: absolute;
-	  z-index: 500;
-	  top: 50%;
-	  left: 50%;
-	  -webkit-transform: translateX(-50%) translateY(-50%);
-	          transform: translateX(-50%) translateY(-50%);
-	  font-size: 3.5rem;
-	  color: #fff;
-	  font-family: Decade;
-	}
+@-webkit-keyframes zoom {
+  0% {
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    opacity: 0;
+  }
+}
 
-	.nav-panel {
-	  position: fixed;
-	  top: 50%;
-	  right: 2%;
-	  -webkit-transform: translateY(-50%);
-	          transform: translateY(-50%);
-	  z-index: 1000;
-	  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.57, 1.2, 0.68, 2.6);
-	  transition: opacity 0.5s, -webkit-transform 0.5s cubic-bezier(0.57, 1.2, 0.68, 2.6);
-	  transition: opacity 0.5s, transform 0.5s cubic-bezier(0.57, 1.2, 0.68, 2.6);
-	  transition: opacity 0.5s, transform 0.5s cubic-bezier(0.57, 1.2, 0.68, 2.6), -webkit-transform 0.5s cubic-bezier(0.57, 1.2, 0.68, 2.6);
-	  will-change: transform, opacity;
-	}
-	.nav-panel.invisible {
-	  opacity: 0;
-	  -webkit-transform: translateY(-50%) scale(0.5);
-	          transform: translateY(-50%) scale(0.5);
-	}
-	.nav-panel ul {
-	  list-style-type: none;
-	}
-	.nav-panel ul .nav-btn {
-	  position: relative;
-	  overflow: hidden;
-	  width: 1rem;
-	  height: 1rem;
-	  margin-bottom: 0.5rem;
-	  border: 0.12rem solid #fff;
-	  border-radius: 50%;
-	  cursor: pointer;
-	  -webkit-transition: border-color, -webkit-transform 0.3s;
-	  transition: border-color, -webkit-transform 0.3s;
-	  transition: border-color, transform 0.3s;
-	  transition: border-color, transform 0.3s, -webkit-transform 0.3s;
-	  will-change: border-color, transform;
-	}
-	.nav-panel ul .nav-btn:after {
-	  width: 100%;
-	  height: 100%;
-	  border-radius: 50%;
-	  -webkit-transform: translateX(-50%) translateY(-50%) scale(0.3);
-	          transform: translateX(-50%) translateY(-50%) scale(0.3);
-	  background-color: #fff;
-	  opacity: 0;
-	  -webkit-transition: opacity 0.3s, -webkit-transform;
-	  transition: opacity 0.3s, -webkit-transform;
-	  transition: transform, opacity 0.3s;
-	  transition: transform, opacity 0.3s, -webkit-transform;
-	  will-change: transform, opacity;
-	}
-	.nav-panel ul .nav-btn.active:after, .nav-panel ul .nav-btn:hover:after {
-	  -webkit-transform: translateX(-50%) translateY(-50%) scale(0.7);
-	          transform: translateX(-50%) translateY(-50%) scale(0.7);
-	  opacity: 1;
-	}
-	.nav-panel ul .nav-btn:hover {
-	  border-color: yellow;
-	  -webkit-transform: scale(1.2);
-	          transform: scale(1.2);
-	}
-	.nav-panel ul .nav-btn:hover:after {
-	  background-color: yellow;
-	}
-	.nav-panel .scroll-btn {
-	  position: absolute;
-	  left: 0;
-	  width: 1rem;
-	  height: 1rem;
-	  border: 0.2rem solid #fff;
-	  border-left: none;
-	  border-bottom: none;
-	  cursor: pointer;
-	  -webkit-transform-origin: 50% 50%;
-	          transform-origin: 50% 50%;
-	  -webkit-transition: border-color 0.3s;
-	  transition: border-color 0.3s;
-	}
-	.nav-panel .scroll-btn.up {
-	  top: -1.6rem;
-	  -webkit-transform: rotate(-45deg);
-	          transform: rotate(-45deg);
-	}
-	.nav-panel .scroll-btn.down {
-	  bottom: -1.2rem;
-	  -webkit-transform: rotate(135deg);
-	          transform: rotate(135deg);
-	}
-	.nav-panel .scroll-btn:hover {
-	  border-color: yellow;
-	}
+@keyframes zoom {
+  0% {
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+    opacity: 0;
+  }
+}
 
-	.check-out {
-	  z-index: 1000;
-	  position: absolute;
-	  bottom: 1rem;
-	  left: 0;
-	  width: 100%;
-	  text-align: center;
-	  color: #fff;
-	  font-family: Decade;
-	  font-size: 1rem;
-	  text-transform: uppercase;
-	}
-	.check-out a {
-	  color: #ffaaaa;
-	  text-decoration: none;
-	  border-bottom: 0.2rem solid;
-	}
-</style>          
+</style>
 
-  <body>
-    <div class="scene">
-  <div class="page page-1 active">
-    <div class="half left"></div>
-    <div class="half right withText">
-      <h2 class="heading">Page 1</h2>
-    </div>
-  </div>
-  <div class="page page-2">
-    <div class="half left withText">
-      <h2 class="heading">Page 2</h2>
-    </div>
-    <div class="half right"></div>
-  </div>
-  <div class="page page-3">
-    <div class="half left"></div>
-    <div class="half right withText">
-      <h2 class="heading">Page 3</h2>
-    </div>
-  </div>
-  <div class="page page-4">
-    <div class="half left withText">
-      <h2 class="heading">Page 4</h2>
-    </div>
-    <div class="half right"></div>
-  </div>
+<div id="spacer"></div>
+<div id="title" class=''>
+  <h1 class=''><span>Techvaganza16</span><em>ComingSoon</em></h1>
 </div>
-<div class="nav-panel">
-  <div class="scroll-btn up"></div>
-  <div class="scroll-btn down"></div>
-  <nav>
-    <ul>
-      <li data-target="1" class="nav-btn nav-page1 active"></li>
-      <li data-target="2" class="nav-btn nav-page2"></li>
-      <li data-target="3" class="nav-btn nav-page3"></li>
-      <li data-target="4" class="nav-btn nav-page4"></li>
-    </ul>
-  </nav>
+<div id="layers">
+  <div class="layer layer-1"></div>
+  <div class="layer layer-2"></div>
+  <div class="layer layer-3"></div>
+  <div class="layer layer-4"></div>
+  <div class="layer layer-5"></div>
 </div>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  </body>
-</html>
+
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
 <script>
-	$(document).ready(function() {
+  (function($) {
+  $(document).ready(function() {
+    //TODO : build the markup outside of the DOM then append it
+    $('.layer').each(function() {
+      
+      var $this = $(this),
+          limit = 30,
+          $star = [];
+      
+      while (limit) {
+        
+        $star = $('<span/>').addClass('star');
+        $star.html('<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M10.744,5.372C7.777,5.372,5.372,2.967,5.372,0c0,2.967-2.405,5.372-5.372,5.372c2.967,0,5.372,2.405,5.372,5.372 C5.372,7.777,7.777,5.372,10.744,5.372z"/></svg>');
+        $star.css({
+          left: randomInt(1, 100) +'%',
+          top: randomInt(1, 100) +'%',
+          transform: 'scale('+ randomNum(0, 1) +')',
+          opacity: randomNum(0.6, 1)
+        });
+        
+        $this.append($star);
+        limit--;
+      }
+    });
+    
+  });
   
-  var pages = $(".page").length,
-      scrolling = false,
-      curPage = 1;
   
-  function pagination(page, movingUp) {
-    scrolling = true;
-    var diff = curPage - page,
-        oldPage = curPage;
-    curPage = page;
-    $(".page").removeClass("active small previous");
-    $(".page-" + page).addClass("active");
-    $(".nav-btn").removeClass("active");
-    $(".nav-page" + page).addClass("active");
-    if (page > 1) {
-      $(".page-" + (page - 1)).addClass("previous");
-      if (movingUp) {
-        $(".page-" + (page - 1)).hide();
-        var hackPage = page;
-        setTimeout(function() {
-          $(".page-" + (hackPage - 1)).show();
-        }, 600);
-      }
-      while (--page) {
-        $(".page-" + page).addClass("small");
-      }
-    }
-    console.log(diff)
-    if (diff > 1) {
-      for (var j = page + 1; j < oldPage; j++) {
-        $(".page-" + j + " .half").css("transition", "transform .7s ease-out");
-      }
-    }
-    setTimeout(function() {
-      scrolling = false;
-      $(".page .half").attr("style", "");
-      $(".page")
-    }, 700);
+  
+  /**
+   * Returns random integer
+   */
+  function randomInt(min, max) {
+    return Math.floor((Math.random() * max) + min);
   }
-  
-  function navigateUp() {
-    if (curPage > 1) {
-      curPage--;
-      pagination(curPage, true);
-    }
+  /**
+   * Returns random number
+   */
+  function randomNum(min, max) {
+    return Math.max((Math.random() * max), min).toFixed(1);
   }
-
-  function navigateDown() {
-    if (curPage < pages) {
-      curPage++;
-      pagination(curPage);
-    }
-  }
-  
-  $(document).on("mousewheel DOMMouseScroll", function(e) {
-    if (!scrolling) {
-      if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
-        navigateUp();
-      } else { 
-        navigateDown();
-      }
-    }
-  });
-  
-  $(document).on("click", ".scroll-btn", function() {
-    if (scrolling) return;
-    if ($(this).hasClass("up")) {
-      navigateUp();
-    } else {
-      navigateDown();
-    }
-  });
-  
-  $(document).on("keydown", function(e) {
-    if (scrolling) return;
-    if (e.which === 38) {
-      navigateUp();
-    } else if (e.which === 40) {
-      navigateDown();
-    }
-  });
-  
-  $(document).on("click", ".nav-btn:not(.active)", function() {
-    if (scrolling) return;
-    pagination(+$(this).attr("data-target"));
-  });
-
-});
+})(jQuery);
 </script>
-{% endblock %} 
+
+<!-- thanks to Marc Newport -->
+{% endblock %}
