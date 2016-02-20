@@ -62,85 +62,83 @@ from .utils import *
 
 
 
-@app.route('/arif')
-@roles_required('admin')
-def arif():
-	events = get_all_events()
-	return render_template('admin.html',events_list=events)
+# @app.route('/arif')
+# @roles_required('admin')
+# def arif():
+# 	events = get_all_events()
+# 	return render_template('admin.html',events_list=events)
 
 
 
-@app.route('/arif_select/<event_name>')
-@roles_required('admin')
-def arif_select(event_name):
-	users = get_event_users(event_name)
-	return render_template('check_event_reg.html',users=users)
+# @app.route('/arif_select/<event_name>')
+# @roles_required('admin')
+# def arif_select(event_name):
+# 	users = get_event_users(event_name)
+# 	return render_template('check_event_reg.html',users=users)
 
 
-@app.route('/')
-@app.route('/index')
-@app.route('/home')
-def home():
-	print('asda');
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def home(path):
 	# return render_template('index.html')
 	return render_template('comingsoon.html')
 
 
 
-@app.route('/user')
-@login_required
-def user():
-	#return render_template('index.html')
-	return render_template('all.html',)
+# @app.route('/user')
+# @login_required
+# def user():
+# 	#return render_template('index.html')
+# 	return render_template('all.html',)
 
 
 
 
-@app.route('/gallery')
-def gallery():
-	return render_template('gallery.html')
+# @app.route('/gallery')
+# def gallery():
+# 	return render_template('gallery.html')
 
 
-@app.route('/petromin')
-def petromin():
-	return render_template('petromin.html')
+# @app.route('/petromin')
+# def petromin():
+# 	return render_template('petromin.html')
 
 
 
-@app.route('/sponsors')
-def sponsors():
-	return render_template('sponsors.html')
+# @app.route('/sponsors')
+# def sponsors():
+# 	return render_template('sponsors.html')
 	
 
 #@app.route('/check_event_reg')
 #@roles_required('event_organisor')
 #def check_event_reg():
-	event_name = current_user.organises.first()
-	users = get_event_users(event_name.view_name)
-	return render_template('check_event_reg.html',users=users)
+	# event_name = current_user.organises.first()
+	# users = get_event_users(event_name.view_name)
+	# return render_template('check_event_reg.html',users=users)
 
-@app.route('/aboutus')
-def aboutus():
-	return render_template('aboutTeam.html')
+# @app.route('/aboutus')
+# def aboutus():
+# 	return render_template('aboutTeam.html')
 
-@app.route('/hospitality')
-def hospitality():
-	return render_template('hospitality.html')
+# @app.route('/hospitality')
+# def hospitality():
+# 	return render_template('hospitality.html')
 
-@app.route('/myapp/<event_name>')
-def myapp(event_name):
-	have = False
-	events = get_all_events()
-	check = contains(events, lambda x: x.view_name == event_name)
-	if check is not None:
-		if current_user.is_authenticated():
-			check2 = contains(current_user.events, lambda x: x.view_name == event_name)
-			if check2 is not None:
-				return render_template('app.html',regiterz=3,event_name=event_name)
-			else:	
-				return render_template('app.html',regiterz=1,event_name=event_name)
-		else:
-			return render_template('app.html',regiterz=2,event_name=event_name)
+# @app.route('/myapp/<event_name>')
+# def myapp(event_name):
+# 	have = False
+# 	events = get_all_events()
+# 	check = contains(events, lambda x: x.view_name == event_name)
+# 	if check is not None:
+# 		if current_user.is_authenticated():
+# 			check2 = contains(current_user.events, lambda x: x.view_name == event_name)
+# 			if check2 is not None:
+# 				return render_template('app.html',regiterz=3,event_name=event_name)
+# 			else:	
+# 				return render_template('app.html',regiterz=1,event_name=event_name)
+# 		else:
+# 			return render_template('app.html',regiterz=2,event_name=event_name)
 
 
 
@@ -152,21 +150,21 @@ def myapp(event_name):
 #    return render_template('test.html',name='bogie')
 
 
-@app.route('/saveProfile', methods = ['POST'])
-@login_required
-def saveProfile():
-	current_user.first_name =request.form['first_name']
-	current_user.last_name =request.form.get('last_name')
-	current_user.cell =request.form.get('cell')
-	# current_user.gender =request.form.get('gender')
-	current_user.college =request.form.get('college')
-	current_user.batch =request.form.get('batch')
-	current_user.branch =request.form.get('branch')
-	db.session.commit()
-	flash('Details were successfully saved')
-	# return redirect(url_for('.user'))
-	return redirect('/user')
-	# return redirect('users/all.html')
+# @app.route('/saveProfile', methods = ['POST'])
+# @login_required
+# def saveProfile():
+# 	current_user.first_name =request.form['first_name']
+# 	current_user.last_name =request.form.get('last_name')
+# 	current_user.cell =request.form.get('cell')
+# 	# current_user.gender =request.form.get('gender')
+# 	current_user.college =request.form.get('college')
+# 	current_user.batch =request.form.get('batch')
+# 	current_user.branch =request.form.get('branch')
+# 	db.session.commit()
+# 	flash('Details were successfully saved')
+# 	# return redirect(url_for('.user'))
+# 	return redirect('/user')
+# 	# return redirect('users/all.html')
 
 
 
@@ -179,103 +177,103 @@ def saveProfile():
 # 
 
 
-@app.route('/events')
-def events_main():
-	events = get_all_events()
-	return render_template('events.html',events_list = events)
+# @app.route('/events')
+# def events_main():
+# 	events = get_all_events()
+# 	return render_template('events.html',events_list = events)
 
 
 
 
 # 1954B0
-@app.route('/register_event', methods=['POST'])
-@login_required
-def register_event():
-	if (request.method == 'POST') and current_user.is_authenticated():
-		event = request.form['event']
-		events = get_all_events()
-		if contains(events, lambda x: x.view_name == event):
-			bogie = add_event_to_user(current_user.email,event)
-			if bogie==True:
-				flash("You are successfully registered for this event")
-				return redirect("/event/%s"%(event))
-			else:
-				return redirect("/events")
-		else:
-			return redirect("/events")
-	else:
-		return redirect('/login')
-	return render_template('test.html')
+# @app.route('/register_event', methods=['POST'])
+# @login_required
+# def register_event():
+# 	if (request.method == 'POST') and current_user.is_authenticated():
+# 		event = request.form['event']
+# 		events = get_all_events()
+# 		if contains(events, lambda x: x.view_name == event):
+# 			bogie = add_event_to_user(current_user.email,event)
+# 			if bogie==True:
+# 				flash("You are successfully registered for this event")
+# 				return redirect("/event/%s"%(event))
+# 			else:
+# 				return redirect("/events")
+# 		else:
+# 			return redirect("/events")
+# 	else:
+# 		return redirect('/login')
+# 	return render_template('test.html')
 
 
-@app.route('/unreg/<event>', methods=['GET'])
-@login_required
-def unregx(event):
-	events = get_all_events()
-	check = contains(events, lambda x: x.view_name == event)
-	if check is not None:
-		check2 = contains(current_user.events, lambda x: x.view_name == event)
-		if check2 is not None:
-			bogie = unregister_to_event(current_user.email,event)
-			if bogie==True:
-				flash("You are successfully Unregistered for this event")
-				return redirect("/event/%s"%(event))
-			else:
-				flash("Error Occured")
-				return redirect("/event/%s"%(event))
-		else:
-			flash("For Unregistering, you have to register first..!! ")		
-			return render_template('events/%s.html'%(event),regiterz=1,event_name=event)
-	else:
-		flash("Please Enter a valid Event name!!!")		
-		return redirect("/events")
+# @app.route('/unreg/<event>', methods=['GET'])
+# @login_required
+# def unregx(event):
+# 	events = get_all_events()
+# 	check = contains(events, lambda x: x.view_name == event)
+# 	if check is not None:
+# 		check2 = contains(current_user.events, lambda x: x.view_name == event)
+# 		if check2 is not None:
+# 			bogie = unregister_to_event(current_user.email,event)
+# 			if bogie==True:
+# 				flash("You are successfully Unregistered for this event")
+# 				return redirect("/event/%s"%(event))
+# 			else:
+# 				flash("Error Occured")
+# 				return redirect("/event/%s"%(event))
+# 		else:
+# 			flash("For Unregistering, you have to register first..!! ")		
+# 			return render_template('events/%s.html'%(event),regiterz=1,event_name=event)
+# 	else:
+# 		flash("Please Enter a valid Event name!!!")		
+# 		return redirect("/events")
 
 
 
-@app.route('/unreg', methods=['POST'])
-@login_required
-def unreg():
-	if request.method == 'POST':
-		event = request.form['event']
-		events = get_all_events()
-		check = contains(events, lambda x: x.view_name == event)
-		if check is not None:
-			check2 = contains(current_user.events, lambda x: x.view_name == event)
-			if check2 is not None:
-				bogie = unregister_to_event(current_user.email,event)
-				if bogie==True:
-					flash("You are successfully Unregistered for this event")
-					return redirect("/event/%s"%(event))
-				else:
-					flash("Error Occured")
-					return redirect("/event/%s"%(event))
-			else:
-				flash("For Unregistering, you have to register first..!! ")		
-				return render_template('events/%s.html'%(event),regiterz=1,event_name=event)
-		else:
-			flash("Please Enter a valid Event name!!!")		
-			return redirect("/events")
-	else:
-		return redirect("/events")
+# @app.route('/unreg', methods=['POST'])
+# @login_required
+# def unreg():
+# 	if request.method == 'POST':
+# 		event = request.form['event']
+# 		events = get_all_events()
+# 		check = contains(events, lambda x: x.view_name == event)
+# 		if check is not None:
+# 			check2 = contains(current_user.events, lambda x: x.view_name == event)
+# 			if check2 is not None:
+# 				bogie = unregister_to_event(current_user.email,event)
+# 				if bogie==True:
+# 					flash("You are successfully Unregistered for this event")
+# 					return redirect("/event/%s"%(event))
+# 				else:
+# 					flash("Error Occured")
+# 					return redirect("/event/%s"%(event))
+# 			else:
+# 				flash("For Unregistering, you have to register first..!! ")		
+# 				return render_template('events/%s.html'%(event),regiterz=1,event_name=event)
+# 		else:
+# 			flash("Please Enter a valid Event name!!!")		
+# 			return redirect("/events")
+# 	else:
+# 		return redirect("/events")
 
 
-@app.route('/event/<event_name>')
-def event(event_name):
-	# check if user is registered with that 
-	have = False
-	events = get_all_events()
-	check = contains(events, lambda x: x.view_name == event_name)
-	if check is not None:
-		if current_user.is_authenticated():
-			check2 = contains(current_user.events, lambda x: x.view_name == event_name)
-			if check2 is not None:
-				return render_template('events/%s.html'%(event_name),regiterz=3,event_name=event_name)
-			else:	
-				return render_template('events/%s.html'%(event_name),regiterz=1,event_name=event_name)
-		else:
-			return render_template('events/%s.html'%(event_name),regiterz=2,event_name=event_name)
-	else:
-		return redirect("/events")
+# @app.route('/event/<event_name>')
+# def event(event_name):
+# 	# check if user is registered with that 
+# 	have = False
+# 	events = get_all_events()
+# 	check = contains(events, lambda x: x.view_name == event_name)
+# 	if check is not None:
+# 		if current_user.is_authenticated():
+# 			check2 = contains(current_user.events, lambda x: x.view_name == event_name)
+# 			if check2 is not None:
+# 				return render_template('events/%s.html'%(event_name),regiterz=3,event_name=event_name)
+# 			else:	
+# 				return render_template('events/%s.html'%(event_name),regiterz=1,event_name=event_name)
+# 		else:
+# 			return render_template('events/%s.html'%(event_name),regiterz=2,event_name=event_name)
+# 	else:
+# 		return redirect("/events")
 
 
 
@@ -284,33 +282,33 @@ def event(event_name):
 #    ALL ADMIN ROUTES
 # 
 # 
-@app.route('/admin')
-@roles_required('admin')
-def admin_home():
-	# res = get_all_organisors()
-	return render_template('test.html',current_user=current_user)
+# @app.route('/admin')
+# @roles_required('admin')
+# def admin_home():
+# 	# res = get_all_organisors()
+# 	return render_template('test.html',current_user=current_user)
 
 
-@app.route('/create_organisor/', methods=['GET', 'POST'])
-@roles_required('admin')
-def create_organisor():
-  return render_template('create_organisor.html')
+# @app.route('/create_organisor/', methods=['GET', 'POST'])
+# @roles_required('admin')
+# def create_organisor():
+#   return render_template('create_organisor.html')
 
 
-@app.route('/create_admin/', methods=['GET', 'POST'])
-@roles_required('admin')
-def create_admin():
-  return render_template('create_organisor.html')
+# @app.route('/create_admin/', methods=['GET', 'POST'])
+# @roles_required('admin')
+# def create_admin():
+#   return render_template('create_organisor.html')
 
 
-def get_all_organisors():
+# def get_all_organisors():
 	# rz = Role.query.filter_by(name='event_organisor').first().id
 	# all_of_them = Role.query.filter_by(id=rz).first().users.all()
 	# rz = Role.query.filter_by(name='event_organisor').first().id
 	# all_of_them = Role.query.filter_by(id=rz).first().users.all()
 	# uz = roles_users.query.filter(rz.id).all()
 	# res = User.query.filter_by(username='alaf').all()
-	return res
+	# return res
 
 #Social Routes
 #
