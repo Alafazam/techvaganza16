@@ -194,7 +194,7 @@ h1 em::after {
 (function($) {
     $(document).ready(function() {
         //TODO : build the markup outside of the DOM then append it
-        $("#suggestion").css({'margin-top':(screen.availHeight-130)+'px'});
+        $("#suggestion").css({'margin-top':(window.innerHeight-35)+'px'});
         $('.layer').each(function() {
 
             var $this = $(this),
