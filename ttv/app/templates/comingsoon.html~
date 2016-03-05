@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:600,900">
 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,700,900">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <style>
 html,
 body {
@@ -176,9 +177,8 @@ h1 em::after {
 </style>
 <div id="spacer"></div>
 <div id="title" class='valign-wrapper'>
-    <h1 class='valign'><span class='center-block'>Techvaganza16</span><em>ComingSoon</em></h1><br>
+    <h1 class='valign'><span class='center-block'>Techvaganza16</span><em>Coming Soon</em></h1><br>
 </div>
-
 <div id="layers">
     <div class="layer layer-1"></div>
     <div class="layer layer-2"></div>
@@ -186,13 +186,14 @@ h1 em::after {
     <div class="layer layer-4"></div>
     <div class="layer layer-5"></div>
 </div>
-<h5><span style='color:white'><a href='goo.gl/r3PTsK' alt='google form'>Well you might wanna visit this link!</a></span></h5>
+
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 <script>
 (function($) {
     $(document).ready(function() {
         //TODO : build the markup outside of the DOM then append it
+        $("#suggestion").css({'margin-top':(window.innerHeight-35)+'px'});
         $('.layer').each(function() {
 
             var $this = $(this),
@@ -234,4 +235,10 @@ h1 em::after {
 })(jQuery);
 </script>
 <!-- thanks to Marc Newport -->
+{% endblock %}
+
+{% block footer %}
+  <div id="suggestion" style='position:relative;z-index:1000;font-size:18px;margin-right:3%;float:right;text-decoration:none;display:block;'>
+    <b><a href='https://goo.gl/r3PTsK' alt='google form' style='color:white;'>Help us Make It Better!</a></b>
+  </div>
 {% endblock %}
