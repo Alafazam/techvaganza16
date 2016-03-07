@@ -1,4 +1,4 @@
-from flask_security.forms import ConfirmRegisterForm, Required
+from flask_security.forms import ConfirmRegisterForm, Required, TextField
 from wtforms import IntegerField,TextField
 from wtforms.validators import *
 
