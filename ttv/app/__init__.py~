@@ -80,8 +80,13 @@ from .utils import *
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def home(path):
-        return render_template('index.html')
-	# return render_template('comingsoon.html')
+<<<<<<< HEAD
+       # return render_template('index.html')
+        return render_template('comingsoon.html')
+=======
+	#return render_template('index.html')
+	return render_template('comingsoon.html')
+>>>>>>> da977ce77e92e3511c251e0b13fc33ee1ac56b62
 
 
 
