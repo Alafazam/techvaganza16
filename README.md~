@@ -56,8 +56,12 @@ $ cd techvaganza16/ttv
 
 $ pip install virtualenv
 $ virtualenv venv
+<<<<<<< HEAD
+$ source venv/bin/activate
+=======
 $ source venv/bin/active
-$ pip install -r requirements.txt
+>>>>>>> da977ce77e92e3511c251e0b13fc33ee1ac56b62
+$ sudo pip install -r requirements.txt
 ```
 
 ```sh
