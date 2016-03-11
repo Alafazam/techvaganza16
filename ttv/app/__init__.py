@@ -108,7 +108,7 @@ def home(path):
 # @app.route('/sponsors')
 # def sponsors():
 # 	return render_template('sponsors.html')
-	
+
 
 #@app.route('/check_event_reg')
 #@roles_required('event_organisor')
@@ -135,7 +135,7 @@ def home(path):
 # 			check2 = contains(current_user.events, lambda x: x.view_name == event_name)
 # 			if check2 is not None:
 # 				return render_template('app.html',regiterz=3,event_name=event_name)
-# 			else:	
+# 			else:
 # 				return render_template('app.html',regiterz=1,event_name=event_name)
 # 		else:
 # 			return render_template('app.html',regiterz=2,event_name=event_name)
@@ -173,8 +173,8 @@ def home(path):
 
 
 #    ALL EVENTS ROUTES
-# 
-# 
+#
+#
 
 
 # @app.route('/events')
@@ -222,10 +222,10 @@ def home(path):
 # 				flash("Error Occured")
 # 				return redirect("/event/%s"%(event))
 # 		else:
-# 			flash("For Unregistering, you have to register first..!! ")		
+# 			flash("For Unregistering, you have to register first..!! ")
 # 			return render_template('events/%s.html'%(event),regiterz=1,event_name=event)
 # 	else:
-# 		flash("Please Enter a valid Event name!!!")		
+# 		flash("Please Enter a valid Event name!!!")
 # 		return redirect("/events")
 
 
@@ -248,10 +248,10 @@ def home(path):
 # 					flash("Error Occured")
 # 					return redirect("/event/%s"%(event))
 # 			else:
-# 				flash("For Unregistering, you have to register first..!! ")		
+# 				flash("For Unregistering, you have to register first..!! ")
 # 				return render_template('events/%s.html'%(event),regiterz=1,event_name=event)
 # 		else:
-# 			flash("Please Enter a valid Event name!!!")		
+# 			flash("Please Enter a valid Event name!!!")
 # 			return redirect("/events")
 # 	else:
 # 		return redirect("/events")
@@ -259,7 +259,7 @@ def home(path):
 
 # @app.route('/event/<event_name>')
 # def event(event_name):
-# 	# check if user is registered with that 
+# 	# check if user is registered with that
 # 	have = False
 # 	events = get_all_events()
 # 	check = contains(events, lambda x: x.view_name == event_name)
@@ -268,7 +268,7 @@ def home(path):
 # 			check2 = contains(current_user.events, lambda x: x.view_name == event_name)
 # 			if check2 is not None:
 # 				return render_template('events/%s.html'%(event_name),regiterz=3,event_name=event_name)
-# 			else:	
+# 			else:
 # 				return render_template('events/%s.html'%(event_name),regiterz=1,event_name=event_name)
 # 		else:
 # 			return render_template('events/%s.html'%(event_name),regiterz=2,event_name=event_name)
@@ -280,8 +280,8 @@ def home(path):
 
 
 #    ALL ADMIN ROUTES
-# 
-# 
+#
+#
 # @app.route('/admin')
 # @roles_required('admin')
 # def admin_home():
@@ -327,7 +327,7 @@ def home(path):
 # ##        print user.id
 # ##        db.session.commit()
 # ##        access_token=connection_values[u'access_token']
-#         if connection_values:                
+#         if connection_values:
 #                 email=connection_values[u'email']
 # ##                print email
 #                 user=user_datastore.find_user(email=email)
@@ -343,15 +343,15 @@ def home(path):
 #                                 else:
 #                                         flash('Failed to link with Facebook!Try Again', 'info')
 #                                         return redirect('/user')
-                                        
+
 #                         else:
 #                                 if login_user(user):
 # ##                                        flash(' Facebook Already linked', 'info')
 #                                         return redirect('/user')
-                                
-                                
+
+
 #                 else:
-                        
+
 # ##                        print "hello"
 #                         user = user_datastore.create_user()
 #                         db.session.commit()
@@ -360,10 +360,10 @@ def home(path):
 #                         connectionE=connection_datastore.find_connection(**connection_values)
 
 #                         if connectionE is None:
-                                
+
 #                                 connection=connection_datastore.create_connection(**connection_values)
 #                                 if login_user(user):
-                                        
+
 #                                         db.session.commit()
 #                                         flash('Account created successfully', 'info')
 #                                         api=provider.get_api()
@@ -371,7 +371,7 @@ def home(path):
 #                                         profile=api.get_object("me")
 # ##                                        print profile
 #                                         email = profile["email"]
-                                        
+
 #                                         user.email=email
 #                                         user.username=email
 #                                         user.first_name=profile["first_name"]
@@ -381,19 +381,19 @@ def home(path):
 #                                         db.session.commit()
 #         ##                                flash('Account created successfully', 'info')
 #                                         return redirect('/user')
-                                
+
 #                                 else:
-                                        
+
 #                                         flash('Failed!Try Again', 'info')
 #                                         return redirect("/register")
-                                
+
 #                         else:
-                                
+
 #                                 flash('Failed!Try Again', 'info')
 #                                 return redirect("/register")
-                
+
 #         else:
-                        
+
 #                 flash('Connection Refused','info')
 #                 return redirect("/register")
 
